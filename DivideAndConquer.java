@@ -20,14 +20,16 @@ public class DivideAndConquer {
     DivideAndConquer(String str, String find){
     	int strSize = str.length();
     	int findSize = find.length();
+        String cursor;
     	//System.out.println(strSize-findSize);
-    	for(int i = 0; i < strSize - findSize; i++){
-    		if(false){
-    			System.out.println(find + " was found");
+    	for(int i = 0; i < (strSize - findSize - 1); i++){
+            cursor = str.substring(i,i+findSize);
+    		if(cursor == find){
+    			System.out.println(cursor + " was found");
     			return;
     		}
     	}
-    	//System.out.println(str.substring(15));
+    	//System.out.println(str.substring(15,17));
     	System.out.println(find + " was not found");
     	return;
     }
