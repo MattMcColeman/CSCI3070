@@ -27,15 +27,21 @@ public class Heap {
 	public void printAsTree(int array[]){
 
 	}
+	//takes an arbitrary array, and sorts it using a heap
+	public void heapSort(){
+
+	}
 
     public static void main(String[] args) {
 
     	int array[] = {1, 4, 92, 34, 8, 9};
     	int len = array.length/2;
-
     	buildMaxHeap(array, len);
-
-    	int n = 5/2;
+    	printAsTree(array);
+    	printAsArray(array);
+    	heapSort();
+    	printAsTree(array);
+    	printAsArray(array);
 
         // Prints "Hello, World" to the terminal window.
         System.out.println("Hello, World" + n);
