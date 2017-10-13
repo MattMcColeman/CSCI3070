@@ -1,42 +1,21 @@
 public class Heap {
 	//Takes an arbitrary array and builds it into a max heap
 	public static void buildMaxHeap(int array[], int length, int x){
-		int largest = x;
-
-		int l = 2*x+1;
-		int r = 2*x+2;
-
-		if(x>=length/2-1 || x<0){
-			return;
-		}
-
-		if(array[x] < array[l]){
-			int temp = array[largest];
-			array[largest] = array[l];
-			array[l] = temp;
-		}
-		else if(array[x] < array[r]){
-			int temp = array[largest];
-			array[largest] = array[r];
-			array[r] = temp;
-		}
-		else{
-			buildMaxHeap(array, length, (x-1)/2);
-			buildMaxHeap(array, length, (x-2)/2);
+		for(int i = length/2-1; i >= 0; i--){
+			maxHeapify(array, length, i);
 		}
 	}
 	//Takes an almost-heap with one violation, and fixes the violation
-	public void maxHeapify(int array[], int length, int x){
+	public static void maxHeapify(int array[], int length, int x){
 		int largest = x;
 		int l = 2*x+1;
 		int r = 2*x+2;
-		if (l<=length && array[l] > array[x]){
+		if (l<length && array[l] > array[x]){
 			largest = l;
-
 		}else{
 			largest = x;
 		}
-		if(r<=length && array[r] > array[largest]){
+		if(r<length && array[r] > array[largest]){
 			largest = r;
 		}
 		if(largest != x){
