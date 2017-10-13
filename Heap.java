@@ -42,12 +42,18 @@ public class Heap {
 		size = size-1;
 	}
 	//Inserts a new element into the heap, preserving the heap property
-	public void maxHeapInsert(int array[]){
-
+	public static void maxHeapInsert(int array[], int length, int num){
+		TotArr[size] = num;
+		size++;
+		//swap top and bottom nodes
+		int temp = TotArr[0];
+		TotArr[0] = TotArr[size-1];
+		TotArr[size-1] = temp;
+		buildMaxHeap(TotArr, size); 
 	}
 	//Prints the array representation (e.g. [16,14,10,8,7,3,9,1,4,2])
 	public static void printAsArray(int array[]){
-		for(int i = 0; i < array.length; i++){
+		for(int i = 0; i < size; i++){
 			System.out.print(array[i]+"|");
 		}
 		System.out.println();
@@ -59,6 +65,7 @@ public class Heap {
 		for(int i = 0; i<Math.sqrt(length); i++){
 			for(int j = (int)Math.pow(2,i); j > 0; j--){
 				if(Q>=length){
+					//System.out.println(TotArr[Q]);
 					System.out.println();
 					return;
 				}
@@ -67,7 +74,7 @@ public class Heap {
 			}
 			System.out.println();
 		}
-		System.out.println();
+		System.out.println(TotArr[Q]);
 
 	}
 	//takes an arbitrary array, and sorts it using a heap
@@ -75,23 +82,28 @@ public class Heap {
 		for(int i = array.length; i > 0; i--){
 			heapExtractMax(array, i);
 		}
+		size = array.length;
 	}
 
+	public static int TotArr[] = new int[100];
 	public static int array[] = {16, 14, 10, 8, 7, 9, 3, 2, 4, 1};
     public static int size = array.length;
 
     public static void main(String[] args) {
 
+    	for(int i = size-1; i >= 0; i--){
+			TotArr[i] = array[i];
+		}
     	
-    	
-    	printAsTree(array, array.length);
-    	printAsArray(array);
+    	printAsTree(TotArr, size);
+    	printAsArray(TotArr);
     	buildMaxHeap(array, size);
     	heapMaximum(array);
     	//heapExtractMax(array, size);
     	heapSort(array);
-    	printAsTree(array, array.length);
-    	printAsArray(array);
+    	maxHeapInsert(array, size, 18);
+    	printAsTree(TotArr, size);
+    	printAsArray(TotArr);
     	
 
         // Prints "Hello, World" to the terminal window.
