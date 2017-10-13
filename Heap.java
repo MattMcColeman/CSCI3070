@@ -45,7 +45,16 @@ public class Heap {
 		System.out.println();
 	}
 	//Prints the heap as a sideways tree
-	public static void printAsTree(int array[]){
+	public static void printAsTree(int array[], int length){
+		int Q = 0;
+		//System.out.print(array[0]+"|");
+		for(int i = 0; i<Math.sqrt(length); i++){
+			for(int j = i; j >= 0; j--){
+				System.out.print(array[Q]+"|");
+				Q++;
+			}
+			System.out.println();
+		}
 
 	}
 	//takes an arbitrary array, and sorts it using a heap
@@ -55,13 +64,13 @@ public class Heap {
 
     public static void main(String[] args) {
 
-    	int array[] = {1, 4, 92, 34, 8, 9};
+    	int array[] = {1, 14, 10, 8, 7, 9, 3, 2, 4, 16};
     	int len = array.length/2;
     	
-    	printAsTree(array);
+    	printAsTree(array, array.length);
     	printAsArray(array);
     	buildMaxHeap(array, array.length, len);
-    	printAsTree(array);
+    	printAsTree(array, array.length);
     	printAsArray(array);
     	heapSort();
 
