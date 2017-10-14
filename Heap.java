@@ -1,8 +1,8 @@
 public class Heap {
 	//Takes an arbitrary array and builds it into a max heap
 	public static void buildMaxHeap(int array[], int length){
-		for(int i = length/2-1; i >= 0; i--){
-			maxHeapify(array, length, i);
+		for(int i = size/2-1; i >= 0; i--){
+			maxHeapify(array, size, i);
 		}
 	}
 	//Takes an almost-heap with one violation, and fixes the violation
@@ -62,9 +62,9 @@ public class Heap {
 	public static void printAsTree(int array[], int length){
 		int Q = 0;
 		//System.out.print(array[0]+"|");
-		for(int i = 0; i<Math.sqrt(length); i++){
+		for(int i = 0; i<Math.sqrt(size); i++){
 			for(int j = (int)Math.pow(2,i); j > 0; j--){
-				if(Q>=length){
+				if(Q>=size){
 					//System.out.println(TotArr[Q]);
 					System.out.println();
 					return;
@@ -79,7 +79,7 @@ public class Heap {
 	}
 	//takes an arbitrary array, and sorts it using a heap
 	public static void heapSort(int array[]){
-		for(int i = array.length; i > 0; i--){
+		for(int i = size; i > 0; i--){
 			heapExtractMax(array, i);
 		}
 		size = array.length;
@@ -97,11 +97,13 @@ public class Heap {
     	
     	printAsTree(TotArr, size);
     	printAsArray(TotArr);
-    	buildMaxHeap(array, size);
-    	heapMaximum(array);
+    	buildMaxHeap(TotArr, size);
+    	heapMaximum(TotArr);
     	//heapExtractMax(array, size);
-    	heapSort(array);
-    	maxHeapInsert(array, size, 18);
+    	
+    	maxHeapInsert(TotArr, size, 18);
+    	maxHeapInsert(TotArr, size, 19);
+    	heapSort(TotArr);
     	printAsTree(TotArr, size);
     	printAsArray(TotArr);
     	
