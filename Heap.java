@@ -49,13 +49,12 @@ public class Heap {
 		int temp = TotArr[0];
 		TotArr[0] = TotArr[size-1];
 		TotArr[size-1] = temp;
-		buildMaxHeap(TotArr, size);
-		prtT++; 
+		buildMaxHeap(TotArr, size); 
 	}
 	//Prints the array representation (e.g. [16,14,10,8,7,3,9,1,4,2])
 	public static void printAsArray(int array[]){
-		for(int i = 0; i < size+prtT; i++){
-			System.out.print(TotArr[i]+"|");
+		for(int i = 0; i < size; i++){
+			System.out.print(array[i]+"|");
 		}
 		System.out.println();
 	}
@@ -64,9 +63,9 @@ public class Heap {
 		int Q = 0;
 		//System.out.print(array[0]+"|");
 
-		for(int i = 0; i<Math.sqrt(length+prtT); i++){
+		for(int i = 0; i<Math.sqrt(length); i++){
 			for(int j = (int)Math.pow(2,i); j > 0; j--){
-				if(Q>=length+prtT){
+				if(Q>=length){
 					//System.out.println(TotArr[Q]);
 					System.out.println();
 					return;
@@ -90,7 +89,6 @@ public class Heap {
 	public static int TotArr[] = new int[100];
 	public static int array[] = {16, 14, 10, 8, 7, 9, 3, 2, 4, 1};
     public static int size = array.length;
-    public static int prtT = 0;
 
     public static void main(String[] args) {
 
@@ -103,9 +101,9 @@ public class Heap {
     	buildMaxHeap(TotArr, size);
     	heapMaximum(TotArr);
     	//heapExtractMax(array, size);
+    	heapSort(array);
     	maxHeapInsert(array, size, 18);
     	maxHeapInsert(array, size, 19);
-    	heapSort(array);
     	printAsTree(TotArr, size);
     	printAsArray(TotArr);
     	
